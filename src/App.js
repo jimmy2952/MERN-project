@@ -1,7 +1,33 @@
-import React from 'react';
+import React from "react";
 
-function App() {
-  return <h1>Let's start!</h1>;
-}
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
+
+import Users from "./user/pages/Users";
+import NewPlaces from "./places/pages/NewPlace";
+import MainNavigation from "./shared/components/Navigation/MainNavigation";
+
+const App = () => {
+  return (
+    <Router>
+      <MainNavigation />
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <Users />
+          </Route>
+          <Route path="/places/new" exact>
+            <NewPlaces />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </main>
+    </Router>
+  );
+};
 
 export default App;
